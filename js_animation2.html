@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>js动画之链式运动与同时运动</title>
+		<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+		}
+		.muldiv {
+			padding: 20px;
+			width:45%;
+			display: inline-block;
+			margin-left: 5px;	
+			overflow: hidden;
+			height: 600px;
+			margin-top: 10px;
+		}
+		.muldiv:first-of-type{
+			border: 1px solid green;
+		}
+		.muldiv:first-of-type>div{
+			background-color: green;
+		}
+		.muldiv:last-of-type{
+			border: 1px solid yellow;
+		}
+		.muldiv:last-of-type>div{
+			background-color: yellow;
+		}
+		.muldiv>div{
+			width: 200px;
+			height: 200px;
+			margin-left: 10px;
+			filter: alpha(opacity:50);
+			opacity: 0.5;
+		}
+	</style>
+</head>
+<body>
+<h1 style="margin:20px;font-size:24px;">js动画之链式运动与同时运动(将鼠标滑过各个控件)</h1>
+<div id="chaindiv" class="muldiv" >
+	<h1 style="color:green;margin:10px;">链式运动(width+height+opacity)</h1>
+	<div></div>
+</div>
+<div id="samediv" class="muldiv">
+	<h1 style="color:yellow;margin:10px;">同时运动(width+height+opacity)</h1>
+	<div></div>
+</div>
+<script type="text/javascript" src="js/move.js"></script>
+<script type="text/javascript">
+	window.onload = function() {
+		//给chaindiv每个div绑定链式运动事件
+		var chaindivs = document.getElementById('chaindiv').getElementsByTagName('div');
+		Array.prototype.forEach.call(chaindivs,function(item,index) {
+			item.onmouseover = function(event) {
+				var target = this;
+				startmove(target,{'width': 600},function(){
+					startmove(target,{'height': 500},function(){
+						startmove(target,{'opacity': 80});
+					});
+				});
+			};	
+			item.onmouseout = function(event) {
+				var target = this;
+				startmove(target,{'opacity': 50},function(){
+					startmove(target,{'height': 200},function(){
+						startmove(target,{'width': 200});
+					});
+				});
+			}
+		});
+		//给samediv每个div绑定同时运动事件
+		var samedivs = document.getElementById('samediv').getElementsByTagName('div');
+		Array.prototype.forEach.call(samedivs,function(item,index) {
+			item.onmouseover = function(event) {
+				var target = this;
+				var jsonmove = {'width': 600,
+								'height': 500,
+								'opacity': 80};
+				startmove(target,jsonmove);
+			};
+			item.onmouseout = function(event) {
+				var target = this;
+				var jsonmove = {'opacity': 50,
+								'height': 200,
+								'width': 200};
+				startmove(target,jsonmove);
+			}
+		});
+	}
+</script>
+</body>
+</html>

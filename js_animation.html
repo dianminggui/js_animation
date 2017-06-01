@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>js动画之单一运动</title>
+		<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+		}
+		ul{
+			padding: 10px;
+			border:2px solid pink;
+		}
+		li{
+			width: 200px;
+			height: 100px;
+			background-color: pink;
+			margin-top: 10px;
+		}
+		.opacitydiv {
+			padding: 10px;
+			border:2px solid yellow;
+			overflow: hidden;
+			margin-top: 20px;
+		}
+		.opacitydiv>div{
+			width: 150px;
+			height:100px;
+			background-color: yellow;
+			float:left;
+			margin-top: 20px;
+			margin-left: 20px;
+			filter: alpha(opacity:30);
+			opacity: 0.3;
+		}
+		.heightdiv {
+			padding: 10px;
+			border: 1px solid green;
+			margin-top: 20px;
+			overflow: hidden;
+			height: 600px;
+		}
+		.heightdiv>div{
+			width: 100px;
+			height: 200px;
+			float: left;
+			margin-top: 10px;
+			margin-left: 10px;
+			background-color: green;
+			filter: alpha(opacity:50);
+			opacity: 0.5;
+		}
+		.top_left_div{
+			width:47%;
+			display: inline-block;
+			vertical-align: top;
+			margin-left: 5px;
+			padding: 10px;
+			border: 1px solid  Moccasin;
+			margin-top: 20px;
+			height: 300px;
+			position: relative;
+		}
+		.top_left_div>div{
+			width:100px;
+			height:100px;
+			background-color: Moccasin;
+			position: absolute;
+			top:80px;
+			left:20px;
+		}
+	</style>
+</head>
+<body>
+<h1 style="margin:20px;font-size:24px;">js动画之单一运动(将鼠标滑过各个控件)</h1>
+<ul id="widthdiv">
+	<h1 style="color:pink;margin:10px;">宽度变化</h1>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+<div class="opacitydiv" id="opacitydiv">
+	<h1 style="color:yellow;margin:10px;">透明度变化</h1>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</div>
+<div>
+	<div class="top_left_div" id="top_div">
+		<h1 style="color: Moccasin;margin:10px;">top变化</h1>
+		<div></div>
+	</div>
+	<div class="top_left_div" id="left_div">
+		<h1 style="color: Moccasin;margin:10px;">left变化</h1>
+		<div></div>
+	</div>
+</div>
+<div class="heightdiv" id="heightdiv">
+	<h1 style="color:green;margin:10px;">高度变化</h1>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</div>
+<script src="js/move.js"></script>
+<script type="text/javascript">
+	window.onload = function() {
+		//给每个li绑定width变化事件
+		var widthlis = document.getElementById('widthdiv').getElementsByTagName('li');
+		Array.prototype.forEach.call(widthlis ,function(item,index) {
+			item.onmouseover = function(event) {
+				startmove(this,{'width':600});
+			}
+			item.onmouseout = function(event) {
+				startmove(this,{'width':200});
+			}
+		});
+
+		//给opacitydiv里的div绑定透明度变化事件
+		var divs = document.getElementById('opacitydiv').getElementsByTagName('div');
+		Array.prototype.forEach.call(divs,function(item,index) {
+			item.onmouseover = function(event) {
+				startmove(this,{'opacity':100});
+			}
+			item.onmouseout = function(event) {
+				startmove(this,{'opacity':30});
+			}
+		});
+
+		//给heightdiv里每个div绑定width变化事件
+		var heightdivs = document.getElementById('heightdiv').getElementsByTagName('div');
+		Array.prototype.forEach.call(heightdivs,function(item,index) {
+			item.onmouseover = function(event) {
+				startmove(this,{'height':500});
+			}
+			item.onmouseout = function(event) {
+				startmove(this,{'height':200});
+			}
+		});
+
+		//top_div
+		var top_div = document.getElementById('top_div');
+			top_div.onmouseover = function(event) {
+				var div = this.getElementsByTagName('div')[0];
+				startmove(div,{'top':200});
+			};
+			top_div.onmouseout = function(event) {
+				var div = this.getElementsByTagName('div')[0];
+				startmove(div,{'top':80});
+			};
+		//left_div
+		var left_div = document.getElementById('left_div');
+			left_div.onmouseover = function(event) {
+				var div = this.getElementsByTagName('div')[0];
+				startmove(div,{'left':500});
+			};
+			left_div.onmouseout = function(event) {
+				var div = this.getElementsByTagName('div')[0];
+				startmove(div,{'left':20});
+			};
+	}
+</script>
+</body>
+</html>

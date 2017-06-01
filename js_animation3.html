@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>js,jq，以及css3仿照淘宝小控件</title>
+		<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+			font-size: 0;
+		}
+		.part {
+			display: inline-block;
+			vertical-align: top;
+			margin-left:10px;
+			width:calc( (100% - 156px) / 3 );
+			border:1px solid #ff6804;
+			text-align: center;
+			padding:20px;
+
+		}
+		.part h1{
+			margin:0 10px 10px 10px;
+			color:#ff6804;
+			font-size: 24px;
+		}
+		.server{
+			width:223px;
+			font-size: 0;
+			border: 1px solid #CCCCCC;
+			margin:0 auto;
+		}
+		.server a{
+			display: inline-block;
+			width:55px;
+			height:70px;
+			position: relative;
+		}
+		.server a + a{
+			border-left: 1px solid #CCCCCC;
+		}
+		.ser_sec{
+			border-top: 1px solid #CCCCCC;
+			border-bottom: 1px solid #CCCCCC;
+		}
+		.server img{
+			width:24px;
+			height:24px;
+			position: absolute;
+			top:15px;
+			left:50%;
+			margin-left: -12px;
+		}
+		.server p{
+			position: absolute;
+			width: 100%;
+			top:40px;
+			text-align: center;
+			font-size: 12px;
+			color: #222;
+		}
+		/* css3实现动画 */
+		@keyframes animation1 {
+			0% {
+				filter: alpha(opacity:100);
+				opacity: 1;
+				top: 15px;
+			}
+			50% {
+				filter: alpha(opacity:0);
+				opacity: 0;
+				top: 0px;
+			}
+			51% {
+				filter: alpha(opacity:0);
+				opacity: 0;
+				top: 45px;
+			}
+			100% {
+				filter: alpha(opacity:100);
+				opacity: 100;
+				top: 15px;
+			}
+		}
+		#part3_server>a:hover>img{
+			animation: animation1 0.5s;
+		}	
+	</style>
+</head>
+<body>
+<h1 style="margin:20px;font-size:24px;">js,jq,以及css3仿照淘宝小控件(将鼠标滑过各个控件)</h1>
+<div class="part part1">
+	<h1>js实现</h1>
+	<div class="server" id="part1_server">
+		<a href="#"><img src="img/个性化.png" /><p>个性化</p></a>
+		<a href="#"><img src="img/优惠卡.png" /><p>优惠卡</p></a>
+		<a href="#"><img src="img/保障.png" /><p>保障</p></a>
+		<a href="#"><img src="img/分类.png" /><p>分类</p></a>
+		<br />
+		<a href="#" class="ser_sec"><img src="img/卡包.png" /><p>卡包</p></a>
+		<a href="#" class="ser_sec"><img src="img/商城.png" /><p>商城</p></a>
+		<a href="#" class="ser_sec"><img src="img/地址.png" /><p>地址</p></a>
+		<a href="#" class="ser_sec"><img src="img/定位.png" /><p>定位</p></a>
+		<br />
+		<a href="#"><img src="img/扫码.png" /><p>扫码</p></a>
+		<a href="#"><img src="img/消息.png" /><p>消息</p></a>
+		<a href="#"><img src="img/特色.png" /><p>特色</p></a>
+		<a href="#"><img src="img/订单.png" /><p>订单</p></a>
+	</div>
+</div>
+<div class="part part2">
+	<h1>jq实现</h1>
+	<div class="server" id="part2_server">
+		<a href="#"><img src="img/个性化.png" /><p>个性化</p></a>
+		<a href="#"><img src="img/优惠卡.png" /><p>优惠卡</p></a>
+		<a href="#"><img src="img/保障.png" /><p>保障</p></a>
+		<a href="#"><img src="img/分类.png" /><p>分类</p></a>
+		<br />
+		<a href="#" class="ser_sec"><img src="img/卡包.png" /><p>卡包</p></a>
+		<a href="#" class="ser_sec"><img src="img/商城.png" /><p>商城</p></a>
+		<a href="#" class="ser_sec"><img src="img/地址.png" /><p>地址</p></a>
+		<a href="#" class="ser_sec"><img src="img/定位.png" /><p>定位</p></a>
+		<br />
+		<a href="#"><img src="img/扫码.png" /><p>扫码</p></a>
+		<a href="#"><img src="img/消息.png" /><p>消息</p></a>
+		<a href="#"><img src="img/特色.png" /><p>特色</p></a>
+		<a href="#"><img src="img/订单.png" /><p>订单</p></a>
+	</div>
+</div>
+<div class="part part3">
+	<h1>css3实现</h1>
+	<div class="server" id="part3_server">
+		<a href="#"><img src="img/个性化.png" /><p>个性化</p></a>
+		<a href="#"><img src="img/优惠卡.png" /><p>优惠卡</p></a>
+		<a href="#"><img src="img/保障.png" /><p>保障</p></a>
+		<a href="#"><img src="img/分类.png" /><p>分类</p></a>
+		<br />
+		<a href="#" class="ser_sec"><img src="img/卡包.png" /><p>卡包</p></a>
+		<a href="#" class="ser_sec"><img src="img/商城.png" /><p>商城</p></a>
+		<a href="#" class="ser_sec"><img src="img/地址.png" /><p>地址</p></a>
+		<a href="#" class="ser_sec"><img src="img/定位.png" /><p>定位</p></a>
+		<br />
+		<a href="#"><img src="img/扫码.png" /><p>扫码</p></a>
+		<a href="#"><img src="img/消息.png" /><p>消息</p></a>
+		<a href="#"><img src="img/特色.png" /><p>特色</p></a>
+		<a href="#"><img src="img/订单.png" /><p>订单</p></a>
+	</div>
+</div>
+<script type="text/javascript" src="js/move.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		//js封装的运动框架实现
+		var part1_a_list = document.getElementById('part1_server').getElementsByTagName('a');
+		Array.prototype.forEach.call(part1_a_list,function(item,index) {
+			item.onmouseenter = function() {
+				var target = this.getElementsByTagName('img')[0];
+				startmove(target,{'top':0,'opacity':0},function(){
+					target.style.top = '45px';
+					startmove(target,{'top':15,'opacity':100},null,10)
+				},10)
+			}
+		});
+		//jq框架实现
+		var $part2_a_list = $('#part2_server>a');
+		$part2_a_list.mouseenter(function(){
+			var $target = $(this).find('img');
+			$target.animate({
+	    		top: 0,
+	    		opacity: 0
+			}, 200,function(){
+				$target.css('top','45px');
+				$target.animate({
+	    		top:15,
+	    		opacity: 100
+			}, 200);
+			});
+		});
+
+	};
+</script>
+</body>
+</html>
